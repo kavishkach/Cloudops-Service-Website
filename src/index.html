@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="CloudOps Solutions provides cloud deployment, containerization, CI/CD automation, infrastructure as code, and monitoring services."
+  >
+
+  <title>CloudOps Solutions</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header class="header" id="header">
+    <div class="container navbar">
+      <a href="#home" class="logo" aria-label="CloudOps Solutions home">
+        <span class="logo-icon">C</span>
+        <span>CloudOps<span class="logo-highlight">Solutions</span></span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#status" class="nav-link">Status</a>
+        <a href="#contact" class="nav-link nav-cta">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero section" id="home">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="eyebrow">
+            Cloud infrastructure made simple
+          </span>
+
+          <h1>
+            Build, deploy and monitor
+            <span>reliable cloud systems.</span>
+          </h1>
+
+          <p class="hero-description">
+            We help growing teams automate deployments, containerize
+            applications and manage secure cloud infrastructure using modern
+            DevOps practices.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contact" class="button button-primary">
+              Start a Project
+            </a>
+
+            <a href="#services" class="button button-secondary">
+              Explore Services
+            </a>
+          </div>
+
+          <div class="hero-trust">
+            <div>
+              <strong>99.9%</strong>
+              <span>Target uptime</span>
+            </div>
+
+            <div>
+              <strong>24/7</strong>
+              <span>Monitoring</span>
+            </div>
+
+            <div>
+              <strong>Secure</strong>
+              <span>Cloud delivery</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Cloud deployment overview">
+          <div class="visual-glow"></div>
+
+          <div class="dashboard-card">
+            <div class="dashboard-header">
+              <div>
+                <p class="small-label">Production Environment</p>
+                <h2>System Overview</h2>
+              </div>
+
+              <span class="status-badge">
+                <span class="status-dot"></span>
+                Healthy
+              </span>
+            </div>
+
+            <div class="metric-grid">
+              <article class="metric-card">
+                <span>Deployments</span>
+                <strong>28</strong>
+                <small>+12% this month</small>
+              </article>
+
+              <article class="metric-card">
+                <span>Services</span>
+                <strong>06</strong>
+                <small>All operational</small>
+              </article>
+
+              <article class="metric-card">
+                <span>Response</span>
+                <strong>84ms</strong>
+                <small>Average latency</small>
+              </article>
+
+              <article class="metric-card">
+                <span>Uptime</span>
+                <strong>99.9%</strong>
+                <small>Last 30 days</small>
+              </article>
+            </div>
+
+            <div class="deployment-list">
+              <div class="deployment-item">
+                <span class="deployment-icon blue">CI</span>
+                <div>
+                  <strong>CI Pipeline</strong>
+                  <small>Build and tests passed</small>
+                </div>
+                <span class="check-mark">✓</span>
+              </div>
+
+              <div class="deployment-item">
+                <span class="deployment-icon purple">CD</span>
+                <div>
+                  <strong>Production Deployment</strong>
+                  <small>Version 1.4.2 deployed</small>
+                </div>
+                <span class="check-mark">✓</span>
+              </div>
+
+              <div class="deployment-item">
+                <span class="deployment-icon green">MON</span>
+                <div>
+                  <strong>Cloud Monitoring</strong>
+                  <small>No active incidents</small>
+                </div>
+                <span class="check-mark">✓</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology strip -->
+    <section class="technology-strip">
+      <div class="container">
+        <p>Built with modern cloud and DevOps technologies</p>
+
+        <div class="technology-list">
+          <span>AWS</span>
+          <span>Docker</span>
+          <span>Terraform</span>
+          <span>GitHub Actions</span>
+          <span>Linux</span>
+          <span>CloudWatch</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section section-soft" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Our services</span>
+
+          <h2>Everything needed for modern cloud delivery</h2>
+
+          <p>
+            Practical solutions designed to improve deployment speed,
+            reliability, security and visibility.
+          </p>
+        </div>
+
+        <div class="card-grid services-grid">
+          <article class="service-card">
+            <span class="service-number">01</span>
+            <div class="service-icon">☁</div>
+
+            <h3>Cloud Deployment</h3>
+
+            <p>
+              Deploy applications to scalable cloud environments with secure
+              networking and reliable infrastructure.
+            </p>
+
+            <ul>
+              <li>AWS cloud setup</li>
+              <li>Managed container deployment</li>
+              <li>Environment configuration</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">02</span>
+            <div class="service-icon">⬡</div>
+
+            <h3>Containerization</h3>
+
+            <p>
+              Package applications into lightweight containers that behave
+              consistently across environments.
+            </p>
+
+            <ul>
+              <li>Docker image creation</li>
+              <li>Nginx configuration</li>
+              <li>Container health checks</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">03</span>
+            <div class="service-icon">↻</div>
+
+            <h3>CI/CD Automation</h3>
+
+            <p>
+              Automate code validation, image builds, security checks and
+              production releases.
+            </p>
+
+            <ul>
+              <li>GitHub Actions pipelines</li>
+              <li>Automated testing</li>
+              <li>Controlled deployments</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">04</span>
+            <div class="service-icon">⌘</div>
+
+            <h3>Infrastructure as Code</h3>
+
+            <p>
+              Create repeatable and reviewable cloud infrastructure using
+              Terraform.
+            </p>
+
+            <ul>
+              <li>Terraform modules</li>
+              <li>Remote state management</li>
+              <li>Infrastructure validation</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">05</span>
+            <div class="service-icon">◉</div>
+
+            <h3>Monitoring</h3>
+
+            <p>
+              Track application health, logs and performance before small
+              problems become incidents.
+            </p>
+
+            <ul>
+              <li>CloudWatch dashboards</li>
+              <li>Logs and metrics</li>
+              <li>Automated alerts</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">06</span>
+            <div class="service-icon">◆</div>
+
+            <h3>Cloud Security</h3>
+
+            <p>
+              Improve infrastructure security using least privilege, scanning
+              and protected deployment workflows.
+            </p>
+
+            <ul>
+              <li>IAM permissions</li>
+              <li>Container scanning</li>
+              <li>Secure authentication</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">How we work</span>
+          <h2>A clear path from code to production</h2>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-card">
+            <span>01</span>
+            <h3>Plan</h3>
+            <p>
+              Define requirements, architecture, security and deployment
+              goals.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <span>02</span>
+            <h3>Build</h3>
+            <p>
+              Create the application, container configuration and
+              infrastructure code.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <span>03</span>
+            <h3>Validate</h3>
+            <p>
+              Run automated tests, health checks and vulnerability scans.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <span>04</span>
+            <h3>Deploy</h3>
+            <p>
+              Release a versioned image through a controlled CI/CD workflow.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <span>05</span>
+            <h3>Monitor</h3>
+            <p>
+              Observe system health, collect logs and respond to alerts.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section section-soft" id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Selected projects</span>
+          <h2>Practical cloud solutions</h2>
+
+          <p>
+            Example systems designed around reliability, automation and
+            maintainability.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card featured-project">
+            <div class="project-image project-image-one">
+              <div class="mini-window">
+                <div class="mini-window-header">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+
+                <div class="mini-window-body">
+                  <div class="mini-sidebar"></div>
+
+                  <div class="mini-content">
+                    <div class="mini-line wide"></div>
+                    <div class="mini-line"></div>
+
+                    <div class="mini-cards">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <span class="project-tag">AWS Deployment</span>
+
+              <h3>Server Status Dashboard</h3>
+
+              <p>
+                A containerized monitoring dashboard deployed to an Ubuntu
+                EC2 server using Docker, Nginx, GitHub Actions and GHCR.
+              </p>
+
+              <div class="project-tools">
+                <span>Docker</span>
+                <span>AWS EC2</span>
+                <span>GitHub Actions</span>
+                <span>Linux</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-image project-image-two">
+              <div class="pipeline-demo">
+                <span>Code</span>
+                <b>→</b>
+                <span>Build</span>
+                <b>→</b>
+                <span>Deploy</span>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <span class="project-tag">Automation</span>
+
+              <h3>Automated CI/CD Pipeline</h3>
+
+              <p>
+                An automated delivery workflow that validates code, builds
+                images, runs health checks and publishes versioned releases.
+              </p>
+
+              <div class="project-tools">
+                <span>GitHub</span>
+                <span>CI/CD</span>
+                <span>Docker</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-image project-image-three">
+              <div class="infra-demo">
+                <span>VPC</span>
+                <span>ECS</span>
+                <span>ALB</span>
+                <span>CW</span>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <span class="project-tag">Infrastructure</span>
+
+              <h3>Terraform Cloud Platform</h3>
+
+              <p>
+                Reusable infrastructure designed for containerized
+                applications running on AWS ECS Fargate.
+              </p>
+
+              <div class="project-tools">
+                <span>Terraform</span>
+                <span>ECS</span>
+                <span>Fargate</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-visual">
+          <div class="about-shape about-shape-one"></div>
+          <div class="about-shape about-shape-two"></div>
+
+          <div class="about-card">
+            <span class="about-card-icon">⚙</span>
+            <strong>Reliable by design</strong>
+            <p>
+              Automation, monitoring and repeatable infrastructure built into
+              every stage.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-content">
+          <span class="eyebrow">About CloudOps</span>
+
+          <h2>Simple systems. Clear processes. Reliable delivery.</h2>
+
+          <p>
+            CloudOps Solutions focuses on building maintainable cloud
+            environments using automation and practical engineering
+            principles.
+          </p>
+
+          <p>
+            Our approach combines source control, containers, infrastructure
+            as code, secure deployment and monitoring into one clear workflow.
+          </p>
+
+          <div class="about-features">
+            <div>
+              <span>✓</span>
+              <p>
+                <strong>Automation first</strong>
+                Reduce manual and repeated work.
+              </p>
+            </div>
+
+            <div>
+              <span>✓</span>
+              <p>
+                <strong>Secure by default</strong>
+                Apply least privilege and controlled access.
+              </p>
+            </div>
+
+            <div>
+              <span>✓</span>
+              <p>
+                <strong>Observable systems</strong>
+                Use logs, metrics and alerts for visibility.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Status -->
+    <section class="section section-soft" id="status">
+      <div class="container">
+        <div class="status-panel">
+          <div class="status-panel-header">
+            <div>
+              <span class="eyebrow">System status</span>
+              <h2>All systems operational</h2>
+              <p id="lastUpdated">Checking latest status...</p>
+            </div>
+
+            <div class="overall-status">
+              <span class="status-dot large"></span>
+              Operational
+            </div>
+          </div>
+
+          <div class="status-services">
+            <div class="status-row">
+              <div>
+                <strong>Website</strong>
+                <small>Public application</small>
+              </div>
+
+              <span class="operational">Operational</span>
+            </div>
+
+            <div class="status-row">
+              <div>
+                <strong>CI/CD Pipeline</strong>
+                <small>Build and deployment automation</small>
+              </div>
+
+              <span class="operational">Operational</span>
+            </div>
+
+            <div class="status-row">
+              <div>
+                <strong>Container Registry</strong>
+                <small>Application image storage</small>
+              </div>
+
+              <span class="operational">Operational</span>
+            </div>
+
+            <div class="status-row">
+              <div>
+                <strong>Cloud Monitoring</strong>
+                <small>Logs, metrics and alarms</small>
+              </div>
+
+              <span class="operational">Operational</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact-section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-content">
+          <span class="eyebrow">Contact us</span>
+
+          <h2>Ready to improve your cloud workflow?</h2>
+
+          <p>
+            Tell us about your application, deployment challenges or
+            infrastructure goals.
+          </p>
+
+          <div class="contact-details">
+            <div>
+              <span>✉</span>
+              <div>
+                <small>Email</small>
+                <strong>hello@cloudopssolutions.dev</strong>
+              </div>
+            </div>
+
+            <div>
+              <span>⌖</span>
+              <div>
+                <small>Location</small>
+                <strong>Sri Lanka · Remote</strong>
+              </div>
+            </div>
+
+            <div>
+              <span>◷</span>
+              <div>
+                <small>Response time</small>
+                <strong>Within one business day</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="name">Full name</label>
+
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your name"
+              autocomplete="name"
+            >
+
+            <small class="error-message"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email address</label>
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="name@example.com"
+              autocomplete="email"
+            >
+
+            <small class="error-message"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="service">Service</label>
+
+            <select id="service" name="service">
+              <option value="">Select a service</option>
+              <option value="cloud-deployment">Cloud Deployment</option>
+              <option value="containerization">Containerization</option>
+              <option value="cicd">CI/CD Automation</option>
+              <option value="terraform">Infrastructure as Code</option>
+              <option value="monitoring">Monitoring</option>
+            </select>
+
+            <small class="error-message"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Project details</label>
+
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              placeholder="Tell us briefly about your project"
+            ></textarea>
+
+            <small class="error-message"></small>
+          </div>
+
+          <button type="submit" class="button button-primary form-button">
+            Send Message
+          </button>
+
+          <p class="form-result" id="formResult" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="#home" class="logo footer-logo">
+          <span class="logo-icon">C</span>
+          <span>CloudOps<span class="logo-highlight">Solutions</span></span>
+        </a>
+
+        <p>
+          Reliable cloud infrastructure, automated delivery and practical
+          DevOps solutions.
+        </p>
+      </div>
+
+      <div>
+        <h3>Services</h3>
+        <a href="#services">Cloud Deployment</a>
+        <a href="#services">Containerization</a>
+        <a href="#services">CI/CD Automation</a>
+        <a href="#services">Monitoring</a>
+      </div>
+
+      <div>
+        <h3>Company</h3>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#status">System Status</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div>
+        <h3>Technology</h3>
+        <span>AWS</span>
+        <span>Docker</span>
+        <span>Terraform</span>
+        <span>GitHub Actions</span>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>
+        © <span id="currentYear"></span> CloudOps Solutions.
+        All rights reserved.
+      </p>
+
+      <a href="health.html">Health Check</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
