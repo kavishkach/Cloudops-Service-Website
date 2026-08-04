@@ -1,0 +1,31 @@
+{
+  "name": "cloudops-service-website",
+  "version": "1.0.0",
+  "description": "A production-style DevOps learning project built with HTML, CSS and JavaScript.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+  "lint:html": "htmlhint \"src/**/*.html\"",
+  "lint:js": "node --check src/script.js",
+  "serve": "http-server src -p 8080 -c-1",
+  "test": "npm run lint:html && npm run lint:js"
+ },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kavishkach/Cloudops-Service-Website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kavishkach/Cloudops-Service-Website/issues"
+  },
+  "homepage": "https://github.com/kavishkach/Cloudops-Service-Website#readme",
+  "devDependencies": {
+    "htmlhint": "^1.9.2",
+    "http-server": "^14.1.1"
+  }
+}
