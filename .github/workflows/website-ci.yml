@@ -69,6 +69,72 @@ jobs:
                       http://127.0.0.1:8080/health.html \
                       | grep -q "Service Healthy"
 
-                    echo "Smoke tests passed."                    
+                    echo "Smoke tests passed."
+
+    docker-validation:
+        name: Docker container validation
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        needs: website-quality
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v6
+
+            - name: Build Docker image
+              run: docker build -t cloudops-website:ci .
+
+            - name: Start container
+              run: |
+                docker run -d \
+                  --name cloudops-ci \
+                  -p 8080:80 \
+                  cloudops-website:ci
+
+            - name: Wait for container health
+              shell: bash
+              run: |
+                for attempt in {1..20}; do
+                  STATUS=$(docker inspect \
+                    --format='{{.State.Health.Status}}' \
+                    cloudops-ci)
+
+                  echo "Container status: $STATUS"
+
+                  if [ "$STATUS" = "healthy" ]; then
+                    echo "Container is healthy."
+                    exit 0
+                  fi
+
+                  if [ "$STATUS" = "unhealthy" ]; then
+                    echo "Container became unhealthy."
+                    docker logs cloudops-ci
+                    exit 1
+                  fi
+
+                  sleep 2
+                done
+
+                echo "Container health check timed out."
+                docker logs cloudops-ci
+                exit 1
+
+            - name: Test website
+              run: |
+                curl --fail --silent --show-error \
+                  http://127.0.0.1:8080/ > /dev/null
+
+            - name: Test health endpoint
+              run: |
+                curl --fail --silent --show-error \
+                  http://127.0.0.1:8080/health \
+                  | grep -q "healthy"
+
+            - name: Show container logs
+              if: always()
+              run: docker logs cloudops-ci || true
+
+            - name: Clean up container
+              if: always()
+              run: docker rm -f cloudops-ci || true     
 
                     
