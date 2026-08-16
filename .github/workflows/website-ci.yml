@@ -69,6 +69,13 @@ jobs:
                       http://127.0.0.1:8080/health.html \
                       | grep -q "Service Healthy"
 
-                    echo "Smoke tests passed."                    
+                    echo "Smoke tests passed."
 
-                    
+            - name: Scan Docker image
+              uses: aquasecurity/trivy-action@master
+              with:
+                image-ref: cloudops-website:ci
+                format: table
+                severity: CRITICAL,HIGH
+                exit-code: '1'
+                  
