@@ -157,3 +157,6 @@ jobs:
         if: always()
         run: |
           docker rm -f cloudops-ci || true
+
+    env:
+      DEBUG: true 
