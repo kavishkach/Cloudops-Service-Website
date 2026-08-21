@@ -90,7 +90,7 @@ jobs:
           docker images
 
       - name: Scan Docker image
-        uses: aquasecurity/trivy-action@0.29.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: cloudops-service-website:v1
           format: table
@@ -131,7 +131,7 @@ jobs:
 
           echo "Container health check timed out."
           docker logs cloudops-ci
-          exit 0
+          exit 1
 
       - name: Test Docker website
         run: |
