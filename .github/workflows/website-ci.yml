@@ -1,74 +1,162 @@
 name: Website CI
 
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches:
+      - main
 
-    pull_request:
-        branches:
-            - main
+  pull_request:
+    branches:
+      - main
 
-    workflow_dispatch:
+  workflow_dispatch:
 
 permissions:
-    contents: read
-    
+  contents: read
+
 jobs:
-    website-quality:
-        name: Website quality checks
-        runs-on: ubuntu-latest
-        timeout-minutes: 10
-        
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v6
+  website-quality:
+    name: Website quality checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
 
-            - name: Set up Node.js
-              uses: actions/setup-node@v6
-              with:
-                  node-version: 24
-                  cache: npm
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-            - name: Install dependencies
-              run: npm ci
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
 
-            - name: Validate HTML
-              run: npm run lint:html
+      - name: Install dependencies
+        run: npm ci
 
-            - name: Check JavaScript Syntax
-              run: npm run lint:js
-              
-            - name: Run website smoke tests
-              shell: bash
-              run: |
-                    npm run serve > server.log 2>&1 &
-                    SERVER_PID=$!
+      - name: Validate HTML
+        run: npm run lint:html
 
-                    trap 'kill $SERVER_PID' EXIT
+      - name: Check JavaScript Syntax
+        run: npm run lint:js
 
-                    for attempt in {1..15}; do
-                      if curl --fail --silent http://127.0.0.1:8080/health.html > /dev/null; then
-                        echo "Website server is ready."
-                        break
-                      fi
+      - name: Run website smoke tests
+        shell: bash
+        run: |
+          npm run serve > server.log 2>&1 &
+          SERVER_PID=$!
 
-                      if [ "$attempt" -eq 15 ]; then
-                        echo "Website failed to start."
-                        cat server.log
-                        exit 1
-                      fi
+          trap 'kill $SERVER_PID' EXIT
 
-                      sleep 1
-                    done
+          for attempt in {1..15}; do
+            if curl --fail --silent \
+              http://127.0.0.1:8080/health.html > /dev/null; then
 
-                    curl --fail --silent --show-error \
-                      http://127.0.0.1:8080/ > /dev/null
+              echo "Website server is ready."
+              break
+            fi
 
-                    curl --fail --silent --show-error \
-                      http://127.0.0.1:8080/health.html \
-                      | grep -q "Service Healthy"
+            if [ "$attempt" -eq 15 ]; then
+              echo "Website failed to start."
+              cat server.log
+              exit 1
+            fi
 
-                    echo "Smoke tests passed."                    
+            sleep 1
+          done
 
-                    
+          curl --fail --silent --show-error \
+            http://127.0.0.1:8080/ > /dev/null
+
+          curl --fail --silent --show-error \
+            http://127.0.0.1:8080/health.html \
+            | grep -q "Service Healthy"
+
+          echo "Smoke tests passed."
+
+  docker-validation:
+    name: Docker validation and security scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    needs: website-quality
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build -t cloudops-service-website:v1 .
+          docker images
+
+      - name: Scan Docker image
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: cloudops-service-website:v1
+          format: table
+          severity: CRITICAL,HIGH
+          exit-code: "0"
+
+      - name: Start Docker container
+        run: |
+          docker run -d \
+            --name cloudops-ci \
+            -p 8080:80 \
+            cloudops-service-website:v1
+
+      - name: Wait for container health
+        shell: bash
+        run: |
+          for attempt in {1..20}; do
+
+            STATUS=$(docker inspect \
+              --format='{{.State.Health.Status}}' \
+              cloudops-ci)
+
+            echo "Container status: $STATUS"
+
+            if [ "$STATUS" = "healthy" ]; then
+              echo "Container is healthy."
+              exit 0
+            fi
+
+            if [ "$STATUS" = "unhealthy" ]; then
+              echo "Container became unhealthy."
+              docker logs cloudops-ci
+              exit 1
+            fi
+
+            sleep 2
+          done
+
+          echo "Container health check timed out."
+          docker logs cloudops-ci
+          exit 1
+
+      - name: Test Docker website
+        run: |
+          curl --fail --silent --show-error \
+            http://127.0.0.1:8080/ > /dev/null
+
+          echo "Docker website test passed."
+
+      - name: Test Docker health endpoint
+        run: |
+          curl --fail --silent --show-error \
+            http://127.0.0.1:8080/health \
+            | grep -q "healthy"
+
+          echo "Docker health endpoint test passed."
+
+      - name: Show container logs
+        if: always()
+        run: |
+          docker logs cloudops-ci || true
+
+      - name: Clean up container
+        if: always()
+        run: |
+          docker rm -f cloudops-ci || true
+
+    env:
+      DEBUG: true
